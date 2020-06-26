@@ -1,0 +1,12 @@
+C:\dev\Reactivity\Persistence\bin\Debug\netstandard2.1\Persistence.deps.json
+C:\dev\Reactivity\Persistence\bin\Debug\netstandard2.1\Persistence.dll
+C:\dev\Reactivity\Persistence\bin\Debug\netstandard2.1\Persistence.pdb
+C:\dev\Reactivity\Persistence\bin\Debug\netstandard2.1\Domain.dll
+C:\dev\Reactivity\Persistence\bin\Debug\netstandard2.1\Domain.pdb
+C:\dev\Reactivity\Persistence\obj\Debug\netstandard2.1\Persistence.csprojAssemblyReference.cache
+C:\dev\Reactivity\Persistence\obj\Debug\netstandard2.1\Persistence.AssemblyInfoInputs.cache
+C:\dev\Reactivity\Persistence\obj\Debug\netstandard2.1\Persistence.AssemblyInfo.cs
+C:\dev\Reactivity\Persistence\obj\Debug\netstandard2.1\Persistence.csproj.CoreCompileInputs.cache
+C:\dev\Reactivity\Persistence\obj\Debug\netstandard2.1\Persistence.csproj.CopyComplete
+C:\dev\Reactivity\Persistence\obj\Debug\netstandard2.1\Persistence.dll
+C:\dev\Reactivity\Persistence\obj\Debug\netstandard2.1\Persistence.pdb
