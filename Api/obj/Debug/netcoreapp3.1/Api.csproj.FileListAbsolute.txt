@@ -7,6 +7,8 @@ C:\dev\Reactivity\Api\bin\Debug\netcoreapp3.1\Api.runtimeconfig.json
 C:\dev\Reactivity\Api\bin\Debug\netcoreapp3.1\Api.runtimeconfig.dev.json
 C:\dev\Reactivity\Api\bin\Debug\netcoreapp3.1\Api.dll
 C:\dev\Reactivity\Api\bin\Debug\netcoreapp3.1\Api.pdb
+C:\dev\Reactivity\Api\bin\Debug\netcoreapp3.1\MediatR.dll
+C:\dev\Reactivity\Api\bin\Debug\netcoreapp3.1\MediatR.Extensions.Microsoft.DependencyInjection.dll
 C:\dev\Reactivity\Api\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
 C:\dev\Reactivity\Api\bin\Debug\netcoreapp3.1\Microsoft.Bcl.HashCode.dll
 C:\dev\Reactivity\Api\bin\Debug\netcoreapp3.1\Microsoft.Data.Sqlite.dll
