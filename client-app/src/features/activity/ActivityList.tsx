@@ -12,8 +12,13 @@ import { IActivity } from '../../models/Activity';
 interface IProps {
   activities: IActivity[];
   selectActivity: (id: string) => void;
+  submitting: boolean;
 }
-const ActivityList: React.FC<IProps> = ({ activities, selectActivity }) => {
+const ActivityList: React.FC<IProps> = ({
+  activities,
+  selectActivity,
+  submitting,
+}) => {
   return (
     <Segment clearing>
       {activities.map((value) => (
