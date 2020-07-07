@@ -1,31 +1,69 @@
-import React from 'react';
-import { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Button } from 'semantic-ui-react';
+import { Container } from 'semantic-ui-react';
+import { IActivity } from '../models/Activity';
+import Navbar from '../features/navbar/Navbar';
+import '../layout/style.css';
+import ActivityDashboard from '../features/activity/ActivityDashboard';
 
-class App extends Component {
-  state = {
-    samples: [],
-  };
+const App: React.FC = () => {
+  const [activities, setActivities] = useState<IActivity[]>([]);
+  const [selectActivity, setSelectedActivity] = useState<IActivity | null>(
+    null
+  );
+  const [editMode, setEditMode] = useState(false);
 
-  componentDidMount() {
-    axios.get('http://localhost:5000/api/value').then((response) => {
-      this.setState({
-        samples: response.data,
+  useEffect(() => {
+    axios
+      .get<IActivity[]>('http://localhost:5000/api/activity')
+      .then((response) => {
+        let activities: IActivity[] = [];
+        response.data.forEach((activity) => {
+          activity.date = activity.date.split('.')[0];
+          activities.push(activity);
+        });
+        setActivities(activities);
       });
-    });
-  }
-  render() {
-    return (
-      <div>
-        {this.state.samples.map((value: any) => (
-          <div key={value.id}>
-            <Button>{value.name}</Button>
-          </div>
-        ))}
-      </div>
-    );
-  }
-}
+  }, []);
+
+  const handleSelectActivity = (id: string) => {
+    setSelectedActivity(activities.filter((a) => a.id === id)[0]);
+    setEditMode(false);
+  };
+  const handleOpenCreateForm = () => {
+    setSelectedActivity(null);
+    setEditMode(true);
+  };
+  const handleCreateActivity = (activity: IActivity) => {
+    setActivities([...activities, activity]);
+    setSelectedActivity(activity);
+    setEditMode(false);
+  };
+  const handleEditActivity = (activity: IActivity) => {
+    setActivities([
+      ...activities.filter((a) => a.id !== activity.id),
+      activity,
+    ]);
+    setSelectedActivity(activity);
+    setEditMode(false);
+  };
+  return (
+    <div>
+      <Navbar openCreateForm={handleOpenCreateForm} />
+      <Container style={{ marginTop: '7em' }}>
+        <ActivityDashboard
+          activities={activities}
+          selectActivity={handleSelectActivity}
+          selectedActivity={selectActivity!}
+          editMode={editMode}
+          setEditMode={setEditMode}
+          setSelectedActivity={setSelectedActivity}
+          createActivity={handleCreateActivity}
+          editActivity={handleEditActivity}
+        />
+      </Container>
+    </div>
+  );
+};
 
 export default App;
