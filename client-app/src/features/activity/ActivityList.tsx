@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useContext } from 'react';
 import {
   Item,
   Image,
@@ -7,21 +7,16 @@ import {
   Divider,
   Label,
 } from 'semantic-ui-react';
-import { IActivity } from '../../models/Activity';
+import { observer } from 'mobx-react-lite';
+import ActivityStore from '../../store/activityStore';
 
-interface IProps {
-  activities: IActivity[];
-  selectActivity: (id: string) => void;
-  submitting: boolean;
-}
-const ActivityList: React.FC<IProps> = ({
-  activities,
-  selectActivity,
-  submitting,
-}) => {
+const ActivityList: React.FC = () => {
+  const activityStore = useContext(ActivityStore);
+  const { activitiesByDate, selectActivity } = activityStore;
+
   return (
     <Segment clearing>
-      {activities.map((value) => (
+      {activitiesByDate.map((value) => (
         <Fragment key={value.id}>
           <Item.Group divided>
             <Item>
@@ -59,4 +54,4 @@ const ActivityList: React.FC<IProps> = ({
   );
 };
 
-export default ActivityList;
+export default observer(ActivityList);

@@ -1,44 +1,43 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Card, Image, Button } from 'semantic-ui-react';
-import { IActivity } from '../../models/Activity';
-interface IProps {
-  activity: IActivity;
-  setSelectedActivity: (activity: IActivity | null) => void;
-  setEditMode: (editMode: boolean) => void;
-}
+import ActivityStore from '../../store/activityStore';
+import { observer } from 'mobx-react-lite';
 
-const ActivityDetails: React.FC<IProps> = ({
-  activity,
-  setEditMode,
-  setSelectedActivity,
-}) => {
+const ActivityDetails: React.FC = () => {
+  const activityStore = useContext(ActivityStore);
+  const {
+    selectedActivity: activity,
+    openEditForm,
+    cancelSelection,
+  } = activityStore;
+
   return (
     <Card fluid>
       <Image
-        src={`/assets/categoryImages/${activity.category}.jpg`}
+        src={`/assets/categoryImages/${activity!.category}.jpg`}
         alt="basic"
       />
       <Card.Content>
-        <Card.Header>{activity.title}</Card.Header>
+        <Card.Header>{activity!.title}</Card.Header>
         <Card.Meta>
-          <span className="date">{activity.date}</span>
+          <span className="date">{activity!.date}</span>
         </Card.Meta>
-        <Card.Description>{activity.description}</Card.Description>
+        <Card.Description>{activity!.description}</Card.Description>
       </Card.Content>
       <Card.Content extra>
-        {activity.venue} and {activity.city}
+        {activity!.venue} and {activity!.city}
       </Card.Content>
       <Button.Group widths={2}>
         <Button
           content="Edit"
-          onClick={() => setEditMode(true)}
+          onClick={() => openEditForm(activity!.id)}
           basic
           color="blue"
         />
         <Button
           color="red"
           basic
-          onClick={() => setSelectedActivity(null)}
+          onClick={() => cancelSelection()}
           content="Cancel"
         />
       </Button.Group>
@@ -46,4 +45,4 @@ const ActivityDetails: React.FC<IProps> = ({
   );
 };
 
-export default ActivityDetails;
+export default observer(ActivityDetails);
