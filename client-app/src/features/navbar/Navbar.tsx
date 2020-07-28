@@ -1,15 +1,13 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Menu, Container, Button } from 'semantic-ui-react';
-import ActivityStore from '../../store/activityStore';
 import { observer } from 'mobx-react-lite';
+import { NavLink } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
-  const activityStore = useContext(ActivityStore);
-
   return (
     <Menu inverted fixed="top">
       <Container>
-        <Menu.Item header>
+        <Menu.Item header as={NavLink} exact to="/">
           <img
             src="/assets/prem.png"
             alt="logo"
@@ -17,12 +15,13 @@ const Navbar: React.FC = () => {
           />
           Reactivity
         </Menu.Item>
-        <Menu.Item name="activities" />
+        <Menu.Item name="activities" as={NavLink} to="/activities" />
         <Menu.Item>
           <Button
             positive
             content="Create Activity"
-            onClick={() => activityStore.openCreateForm()}
+            as={NavLink}
+            to="/create"
           />
         </Menu.Item>
       </Container>

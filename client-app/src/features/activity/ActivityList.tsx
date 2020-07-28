@@ -9,10 +9,11 @@ import {
 } from 'semantic-ui-react';
 import { observer } from 'mobx-react-lite';
 import ActivityStore from '../../store/activityStore';
+import { Link } from 'react-router-dom';
 
 const ActivityList: React.FC = () => {
   const activityStore = useContext(ActivityStore);
-  const { activitiesByDate, selectActivity } = activityStore;
+  const { activitiesByDate } = activityStore;
 
   return (
     <Segment clearing>
@@ -41,7 +42,8 @@ const ActivityList: React.FC = () => {
                     floated="right"
                     color="blue"
                     content="View More"
-                    onClick={() => selectActivity(value.id)}
+                    as={Link}
+                    to={`/activities/${value.id}`}
                   />
                 </Item.Extra>
               </Item.Content>
