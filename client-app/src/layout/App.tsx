@@ -6,7 +6,7 @@ import Navbar from '../features/navbar/Navbar';
 import ActivityDashboard from '../features/activity/ActivityDashboard';
 import Homepage from '../features/home/Homepage';
 import ActivityForm from '../features/form/ActivityForm';
-import ActivityDetails from '../features/activity/ActivityDetails';
+import ActivityDetails from '../features/details/ActivityDetails';
 import '../layout/style.css';
 
 const App: React.FC<RouteComponentProps> = ({ location }) => {
