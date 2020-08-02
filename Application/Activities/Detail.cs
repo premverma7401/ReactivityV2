@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 using System.Threading;
 using Persistence;
 using System;
+using Application.Errors;
+using System.Net;
 
 namespace Application
 {
@@ -27,7 +29,7 @@ namespace Application
                 var activity = await _context.Activities.FindAsync(request.Id);
                 if (activity == null)
                 {
-                    throw new Exception("No Activity Found");
+                    throw new RestException(HttpStatusCode.NotFound, new { activity = "No Activity Found" });
                 }
                 return activity;
 

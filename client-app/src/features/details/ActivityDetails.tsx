@@ -28,6 +28,7 @@ const ActivityDetails: React.FC<RouteComponentProps<DetailsParam>> = ({
 
   if (loadingInitial || !activity)
     return <LoadingComponent content="Loading Activity" />;
+  if (!activity) return <h2>Activity Not found</h2>;
   return (
     <Grid>
       <Grid.Column width={10}>
